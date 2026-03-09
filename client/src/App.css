@@ -1,0 +1,632 @@
+/* --- THEME VARIABLES --- */
+:root {
+  --primary-blue: #007bff;
+  --dark-blue: #0056b3;
+  --soft-bg: #f4f7f9;
+  --text-main: #2d3436;
+  --text-muted: #636e72;
+  --glass: rgba(255, 255, 255, 0.95);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* --- GLOBAL STYLING --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--soft-bg);
+  color: var(--text-main);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- HOME HERO SECTION --- */
+.home-hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 40, 80, 0.7), rgba(0, 40, 80, 0.4)), 
+              url('https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?q=80&w=2070&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;      /* stack content vertically */
+  justify-content: center;     /* vertical centering */
+  align-items: center;         /* horizontal centering */
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  max-width: 800px;
+  padding: 20px;
+  z-index: 2;
+  text-align: center;
+  margin: auto;               /* ensures vertical centering inside flex column */
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+.hero-content h1 span {
+  color: var(--primary-blue);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* --- HERO BUTTONS --- */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  z-index: 2;
+}
+
+/* Primary Button: Access Portal */
+.btn-primary {
+  background-color: #007bff;       /* bright blue */
+  color: white;
+  font-weight: 700;
+  padding: 16px 45px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); /* soft shadow */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;       /* darker blue on hover */
+  transform: translateY(-3px) scale(1.05); /* subtle pop */
+  box-shadow: 0 12px 25px rgba(0, 86, 179, 0.4);
+}
+
+/* Secondary Button: Register Child */
+.btn-secondary {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  font-weight: 700;
+  padding: 16px 45px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #0056b3; /* match primary hover color */
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hide hero buttons after login */
+.logged-in .hero-buttons {
+  display: none;
+}
+
+
+/* --- AUTH PAGES (LOGIN/REGISTER) --- */
+.auth-page {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--soft-bg);
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  margin-bottom: 10px;
+  color: var(--dark-blue);
+  font-weight: 700;
+}
+
+.auth-card p {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+/* --- FORM STYLING --- */
+.form-group {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #dfe6e9;
+  border-radius: 12px;
+  background: #fdfdfd;
+  transition: 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+}
+
+/* --- BUTTONS --- */
+.btn-main, .btn-auth {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 14px 35px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-main:hover, .btn-auth:hover {
+  background-color: var(--dark-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+}
+
+.btn-outline {
+  border: 2px solid white;
+  color: white;
+  padding: 12px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: var(--dark-blue);
+}
+
+/* --- SAFE NAVBAR FIX --- */
+.main-nav {
+  background: #ffffff;
+  padding: 15px 5%;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: block; /* Ensures it stays visible */
+  width: 100%;
+}
+
+.nav-container { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-logo { 
+  font-size: 1.5rem; 
+  font-weight: 800; 
+  color: #007bff; /* Standard Blue */
+  text-decoration: none; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+}
+
+.nav-links { 
+  display: flex; 
+  gap: 20px; 
+  align-items: center; 
+}
+
+.nav-links a { 
+  text-decoration: none; 
+  color: #333333; 
+  font-weight: 600; 
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover { 
+  color: #007bff; 
+}
+
+/* User Section */
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 10px;
+  padding-left: 15px;
+  border-left: 1px solid #eeeeee;
+}
+
+.btn-nav-signup { 
+  background: #007bff; 
+  color: white !important; 
+  padding: 8px 20px; 
+  border-radius: 50px; 
+}
+
+.btn-logout { 
+  background: #fff0f0; 
+  color: #dc3545; 
+  border: 1px solid #ffccd5; 
+  padding: 6px 15px; 
+  border-radius: 50px; 
+  cursor: pointer; 
+  font-weight: 600;
+}
+
+.btn-logout:hover {
+  background: #dc3545;
+  color: white;
+}
+/* --- FOOTER --- */
+.main-footer { background: #1a1a1a; color: white; padding: 60px 10% 20px; margin-top: 50px; }
+.footer-content { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 40px; }
+.footer-section h4 { color: var(--primary-blue); margin-bottom: 20px; }
+.footer-section p { opacity: 0.7; line-height: 1.6; }
+.footer-section ul { list-style: none; padding: 0; }
+.footer-section ul li { margin-bottom: 10px; }
+.footer-section a { color: white; opacity: 0.7; text-decoration: none; }
+.footer-bottom { border-top: 1px solid #333; padding-top: 20px; text-align: center; font-size: 0.8rem; opacity: 0.5; }
+
+/* --- ADMIN & DASHBOARD TABLES --- */
+.admin-container { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+.management-card { background: white; border-radius: 16px; padding: 30px; box-shadow: var(--shadow); margin-bottom: 30px; }
+.admin-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
+.admin-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; padding: 10px 20px; text-align: left; }
+.admin-table td { background: #fff; padding: 20px; border-top: 1px solid #f1f1f1; border-bottom: 1px solid #f1f1f1; }
+.admin-table tr td:first-child { border-left: 1px solid #f1f1f1; border-radius: 12px 0 0 12px; }
+.admin-table tr td:last-child { border-right: 1px solid #f1f1f1; border-radius: 0 12px 12px 0; }
+
+/* --- CONTENT WRAPPER --- */
+.app-wrapper { display: flex; flex-direction: column; min-height: 100vh; }
+.content-area { flex: 1; }
+
+/* --- Vertical Roadmap CSS --- */
+.roadmap-list {
+    position: relative;
+    padding-left: 30px;
+    margin-top: 30px;
+}
+
+.roadmap-list::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e1e8ed;
+}
+
+.roadmap-item {
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vax-circle {
+    position: absolute;
+    left: -25px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #007bff;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+.roadmap-item.completed .vax-circle { background: #28a745; box-shadow: 0 0 0 2px #28a745; }
+.roadmap-item.upcoming .vax-circle { background: #ffc107; box-shadow: 0 0 0 2px #ffc107; }
+
+.badge.completed { background: #d4edda; color: #155724; }
+.badge.upcoming { background: #fff3cd; color: #856404; }
+
+/* --- PROFILE PAGE LAYOUT --- */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 40px;
+  margin-top: 20px;
+}
+
+/* Responsive: Stack columns on mobile */
+@media (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section h4 {
+border-left: 4px solid var(--primary-blue);
+    padding-left: 10px;
+    margin-bottom: 25px;
+}
+
+/* --- LOCKED FIELD STYLING --- */
+/* This makes the Email and Health ID look non-editable */
+.form-group input:disabled {
+  background-color: #f8f9fa; /* Light grey */
+  color: #a0a0a0;            /* Muted text */
+  cursor: not-allowed;       /* Shows a "no entry" icon on hover */
+  border: 1px dashed #ced4da; /* Dashed border to signal "read-only" */
+}
+
+/* --- NAV NAME LINK --- */
+/* Makes the name in the Navbar look like a clickable link */
+.nav-name-link {
+  color: var(--primary-blue) !important;
+  text-decoration: none;
+  transition: 0.3s;
+  padding-bottom: 2px;
+}
+
+.nav-name-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* --- FORM TWEAKS --- */
+.management-card form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the save button */
+}
+
+.profile-grid .form-group {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.btn-update {
+  background-color: var(--primary-blue);
+  color: white;
+  padding: 14px 60px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+  display: block; /* Centers the button */}
+
+.btn-update:hover {
+  background-color: var(--dark-blue);
+  transform: translateY(-2px);
+}
+
+/* User container needs relative positioning so dropdown floats below it */
+.nav-user-container {
+  position: relative;
+}
+
+.nav-user-display {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  user-select: none; /* Prevents text highlighting on double click */
+}
+
+.nav-user-display:hover {
+  background: #f0f7ff;
+}
+
+/* The actual floating menu */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  min-width: 180px;
+  padding: 10px 0;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2000;
+  border: 1px solid #eee;
+}
+
+.nav-dropdown a {
+  padding: 12px 20px;
+  color: #333 !important;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: block;
+}
+
+.nav-dropdown a:hover {
+  background: #f8f9fa;
+  color: #007bff !important;
+}
+
+.dropdown-logout {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  color: #dc3545;
+  font-weight: 600;
+  cursor: pointer;
+  border-top: 1px solid #eee;
+}
+
+.dropdown-logout:hover {
+  background: #fff0f0;
+}
+
+.data-row {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-row label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.data-row span {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    padding: 8px 0;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.edit-input {
+    padding: 10px;
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.notif-card {
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-10px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.nav-notif-bell:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.status-badge.upcoming { background: #e3f2fd; color: #007bff; }
+.status-badge.completed { background: #d4edda; color: #28a745; }
+.status-badge.missed { background: #f8d7da; color: #dc3545; }
+
+/* --- UNIFIED MOBILE DASHBOARD FIXES --- */
+@media (max-width: 768px) {
+    /* 1. Prevent Top Header Overlap */
+    .admin-container, 
+    .operator-dashboard-wrapper {
+        padding: 15px !important;
+        padding-top: 90px !important; /* Moves content below fixed headers/logos */
+    }
+
+    /* 2. Fix Horizontal Cutting (The Scroll Wrapper) */
+    /* This ensures your Roadmap and Registry tables can be swiped */
+    .table-scroll-area, 
+    .table-responsive {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important; 
+        -webkit-overflow-scrolling: touch;
+        background: #ffffff;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* 3. Force Table Width (So data doesn't disappear/squish) */
+    .table-scroll-area table,
+    .table-responsive table,
+    table {
+        min-width: 700px !important; /* Forces the table to stay wide enough to read */
+        width: 100%;
+    }
+
+    /* 4. Stack Stats and Headers */
+    .stat-grid, 
+    .dashboard-header-row,
+    .search-container-mobile {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .stat-card, 
+    .management-card {
+        width: 100% !important;
+    }
+
+    /* 5. Improve Tab Navigation for Touch */
+    .admin-container div[style*="overflowX: auto"] {
+        padding-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    button {
+        min-height: 44px; /* Minimum recommended touch target size */
+        padding: 10px 15px !important;
+    }
+}
+
+/* Add to your CSS */
+.recorded {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-5px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
