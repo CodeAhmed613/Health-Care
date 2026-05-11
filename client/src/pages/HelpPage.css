@@ -1,0 +1,29 @@
+.help-container{
+  display:flex;
+  min-height:80vh;
+}
+
+.help-sidebar{
+  width:220px;
+  background:#f4f4f4;
+  padding:20px;
+}
+
+.help-sidebar button{
+  display:block;
+  width:100%;
+  margin-bottom:10px;
+  padding:10px;
+  border:none;
+  background:#e0e0e0;
+  cursor:pointer;
+}
+
+.help-sidebar button:hover{
+  background:#d0d0d0;
+}
+
+.help-content{
+  flex:1;
+  padding:30px;
+}

@@ -16,7 +16,7 @@ import Roadmap from './components/Roadmap';
 import OperatorDashboard from './components/OperatorDashboard';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
-
+import HelpPage from './pages/HelpPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -53,7 +53,7 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path="/notifications" element={<Notifications />} />
-
+            <Route path="/help" element={<HelpPage />} />
           </Routes>
         </div>
         <Footer />
