@@ -11,8 +11,30 @@ const infantRoutes = require('./routes/infant');
 const notificationRoutes = require('./routes/notifications');
 
 const app = express();
+
+// --- Middleware ---
 app.use(express.json());
-app.use(cors());
+
+// Configure CORS for local development and your Vercel production domain
+const allowedOrigins = [
+    'http://localhost:3000',             // React local dev
+    'http://localhost:5173',             // Vite local dev
+    'https://health-care613.vercel.app'  // Your production Vercel app
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // Allow server-to-server or tools like Postman (which don't send an origin header)
+        if (!origin) return callback(null, true);
+        
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
 
 // --- MongoDB connection ---
 mongoose.connect(process.env.MONGO_URI)
@@ -32,5 +54,5 @@ app.use('/api/notifications', notificationRoutes);
 // --- Start server ---
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 Server running on http://192.168.8.189:${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
